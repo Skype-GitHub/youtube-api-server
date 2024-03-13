@@ -191,10 +191,6 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
 
 @app.get('/watch', response_class=HTMLResponse)
 def video(v:str,response: Response,request: Request,yuki: Union[str] = Cookie(None),proxy: Union[str] = Cookie(None)):
-    
-    response.set_cookie(key="yuki", value="True",max_age=7*24*60*60)
-    videoid = v
-    t = get_data(videoid)
-    response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
-    return template('video.html', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy})
+   
+    return template('video.txt', {"request": request,"videoid":videoid,"videourls":t[1],"res":t[0],"description":t[2],"videotitle":t[3],"authorid":t[4],"authoricon":t[6],"author":t[5],"proxy":proxy})
 
